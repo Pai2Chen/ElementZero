@@ -5,6 +5,7 @@ on: [push]
 env:
   eatpdb_version: v0.0.5
   bds_version: 1.17.10.04
+  ACTIONS_ALLOW_UNSECURE_COMMANDS: true
 
 jobs:
   build:
@@ -33,7 +34,7 @@ jobs:
         echo PATH=C:/LLVM/bin;$env:PATH >> $GITHUB_ENV
 
     - name: Install vcpkg
-      uses: lukka/run-cmake@v3
+      uses: lukka/run-cmake@v2
       with:
         vcpkgDirectory: '${{ github.workspace }}/vcpkg'
         vcpkgArguments: '@${{ github.workspace }}/vcpkg.txt'
